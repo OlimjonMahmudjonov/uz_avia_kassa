@@ -1,6 +1,5 @@
 package uzonlinecourseproject.uzavia.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -8,34 +7,29 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import uzonlinecourseproject.uzavia.enums.Luggage_;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "promotion")
+@Table(name = "luggage")
 @Entity
-public class Promotion {
+public class Luggage {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private  float weight;
+    private BigDecimal extra_weight;
 
-    private String promocode;
+    @Enumerated(EnumType.STRING)
+    private Luggage_ luggage;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime start_at;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime end_at;
-
-    private float discount;
-    private boolean is_active;
-
-    /// relation
-    private Integer flight_id;
-    private Integer payment_id;
+    ///  relation
+    private  Integer ticked_id ;
 
 
     ///  event for

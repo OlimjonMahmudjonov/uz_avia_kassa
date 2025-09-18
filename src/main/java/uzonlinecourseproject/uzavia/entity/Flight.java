@@ -39,8 +39,7 @@ public class Flight {
     private LocalDateTime arrival_time;
 
     private BigDecimal price;
-    private BigDecimal tax;
-    private BigDecimal total_price;
+
 
     private int seat_count;
     @Enumerated(EnumType.STRING)

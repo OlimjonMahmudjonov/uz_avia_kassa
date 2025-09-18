@@ -1,6 +1,5 @@
 package uzonlinecourseproject.uzavia.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,30 +14,22 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "promotion")
+@Table(name = "airCraft")
 @Entity
-public class Promotion {
+public class Aircraft {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String promocode;
+    private  String ariCraftName;
+    private  int totalSeats;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime start_at;
+    ///  relation
+    private  Integer airline_id ;
+    private  Integer flight_id ;
+    private  Integer seat_id  ;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime end_at;
-
-    private float discount;
-    private boolean is_active;
-
-    /// relation
-    private Integer flight_id;
-    private Integer payment_id;
-
-
-    ///  event for
+    /// event for
     @CreationTimestamp
     private LocalDateTime created_at;
     @UpdateTimestamp

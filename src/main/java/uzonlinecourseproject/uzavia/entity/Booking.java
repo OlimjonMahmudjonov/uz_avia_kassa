@@ -36,7 +36,7 @@ public class Booking {
     //private Integer notification_id;
 
 
-    ///  eventlar uchun
+    ///  event for
     @CreationTimestamp
     private LocalDateTime created_at;
     @UpdateTimestamp

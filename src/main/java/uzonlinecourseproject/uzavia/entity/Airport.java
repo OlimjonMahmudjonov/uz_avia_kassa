@@ -38,6 +38,7 @@ public class Airport {
     @UpdateTimestamp
     private LocalDateTime updated_at;
 
+    ///  relation
     private  Integer flight_id; // realition   for
     private Integer route_id; // yo`nalish uchun
 }
