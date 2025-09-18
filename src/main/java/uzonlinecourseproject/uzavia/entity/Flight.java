@@ -6,7 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import uzonlinecourseproject.uzavia.enums.Flight_Status;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -34,10 +38,29 @@ public class Flight {
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime arrival_time;
 
-    private double price;
+    private BigDecimal price;
+    private BigDecimal tax;
+    private BigDecimal total_price;
+
     private int seat_count;
+    @Enumerated(EnumType.STRING)
+    private Flight_Status status;
     private String airline_name;
 
-    @Column(name = "airline_id")
+
+    private String weatherCondition;
+    private int delayMinutes;
+
+    ///  event  for
+    @CreationTimestamp
+    private LocalDateTime created_at;
+    @UpdateTimestamp
+    private LocalDateTime updated_at;
+
+    ///  relations for entities
+
     private Integer airlineId;
+    private Integer aircraft_id;
+
+
 }

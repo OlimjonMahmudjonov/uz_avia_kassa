@@ -6,8 +6,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import uzonlinecourseproject.uzavia.enums.Book_Status;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
+import uzonlinecourseproject.uzavia.enums.TicketStatus;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 @Getter
@@ -21,17 +24,35 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String seat_number;
-    private Book_Status status;
-
+    private String ticket_number;
+    private BigDecimal price;
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime purchase_time;
+    private LocalDateTime purchase_date;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime expiry_date;
+    private boolean isReturn;
+    private String barcode; /// qrcode for
 
-    private double price;
+    @Enumerated(EnumType.STRING)
+    private TicketStatus status;
 
-    @Column(name = "user_id")
-    private Integer userId;
+    ///  relations for   entities
+    private Integer booking_id;
+    private Integer flight_id;
+    private Integer seat_id;
+    private Integer payment_id;
+    private Integer passenger_id;
+    private Integer luggage_id;
 
-    @Column(name = "flight_id")
-    private Integer flightId;
+
+    @Column(name = "departure_airport_id")
+    private Integer departureAirportId;
+
+    ///   event for
+    @CreationTimestamp
+    private LocalDateTime created_at;
+    @UpdateTimestamp
+    private LocalDateTime updated_at;
+
+
 }

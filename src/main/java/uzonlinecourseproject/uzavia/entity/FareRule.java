@@ -7,37 +7,40 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import uzonlinecourseproject.uzavia.enums.AirportCode;
+import uzonlinecourseproject.uzavia.enums.SeatStatus;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "airport")
+@Table(name = "fareRule")
 @Entity
-public class Airport {
+public class FareRule {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    private String airport_name;
-    private String city;
-    private String country;
-    private boolean isGable_Airport;
-    private AirportCode whereTo;
-    private AirportCode ToWhere;
+    private SeatStatus status;
+    private BigDecimal basePrice;
+    private BigDecimal taxPercentage;
+    private BigDecimal cancellationPrice;
+    private  boolean isRefundable;
 
-    private ZonedDateTime timeZone;
+    ///  relation
+    private  Integer flight_id ;
+    private Integer route_id ;//TODO fix
+    private Integer ticket_id ;
 
-    ///  event  for
+    ///  event for
     @CreationTimestamp
     private LocalDateTime created_at;
     @UpdateTimestamp
     private LocalDateTime updated_at;
 
-    private  Integer flight_id; // realition   for
-    private Integer route_id; // yo`nalish uchun
+
+
+
 }

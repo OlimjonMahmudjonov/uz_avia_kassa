@@ -1,5 +1,6 @@
 package uzonlinecourseproject.uzavia.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,37 +8,37 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import uzonlinecourseproject.uzavia.enums.AirportCode;
+import uzonlinecourseproject.uzavia.enums.Book_Status;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "airport")
+@Table(name = "booking")
 @Entity
-public class Airport {
+public class Booking {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
 
-    private String airport_name;
-    private String city;
-    private String country;
-    private boolean isGable_Airport;
-    private AirportCode whereTo;
-    private AirportCode ToWhere;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private  LocalDateTime bookingDate;
 
-    private ZonedDateTime timeZone;
+    @Enumerated(EnumType.STRING)
+    private Book_Status bookingStatus;
 
-    ///  event  for
+    ///  relation
+    private Integer user_id;
+    private Integer ticket_id;
+    private Integer payment_id;
+    //private Integer notification_id;
+
+
+    ///  eventlar uchun
     @CreationTimestamp
     private LocalDateTime created_at;
     @UpdateTimestamp
     private LocalDateTime updated_at;
-
-    private  Integer flight_id; // realition   for
-    private Integer route_id; // yo`nalish uchun
 }

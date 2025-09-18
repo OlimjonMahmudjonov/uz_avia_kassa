@@ -7,37 +7,33 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import uzonlinecourseproject.uzavia.enums.AirportCode;
+import uzonlinecourseproject.uzavia.enums.Sent_Type;
 
 import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "airport")
+@Table(name = "notification")
 @Entity
-public class Airport {
+public class Notification {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Long id;
+    private String message;
+    private LocalDateTime send_time;
+    private boolean isRead;
+    private Sent_Type sent_type ;
 
-    private String airport_name;
-    private String city;
-    private String country;
-    private boolean isGable_Airport;
-    private AirportCode whereTo;
-    private AirportCode ToWhere;
+    ///  relation
+    private  Integer user_id;
+    private  Integer booking_id;
 
-    private ZonedDateTime timeZone;
 
-    ///  event  for
+    ///  event for
     @CreationTimestamp
     private LocalDateTime created_at;
     @UpdateTimestamp
     private LocalDateTime updated_at;
-
-    private  Integer flight_id; // realition   for
-    private Integer route_id; // yo`nalish uchun
 }

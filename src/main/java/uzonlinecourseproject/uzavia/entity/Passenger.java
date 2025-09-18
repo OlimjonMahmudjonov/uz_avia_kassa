@@ -1,5 +1,6 @@
 package uzonlinecourseproject.uzavia.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,6 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import uzonlinecourseproject.uzavia.enums.Nationality;
+import uzonlinecourseproject.uzavia.enums.PassportType;
+import uzonlinecourseproject.uzavia.enums.SEX;
 
 import java.time.LocalDateTime;
 
@@ -14,26 +18,30 @@ import java.time.LocalDateTime;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "users")
+@Table(name = "passenger")
 @Entity
-
-public class Users {
+public class Passenger {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String firstName;
     private String lastName;
-    private String email;
-    private String password;
-    private String role;
-    private boolean isVerified;
-    private int collectStart;
+    private String passwordNumber;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDateTime birthday;
+    private SEX sex ;
+    private Nationality nationality;
+    private PassportType type;
+
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    private LocalDateTime passwordDuration ;
 
 
     ///  relation for entity
-    private Integer booking_id;
-    private Integer payment_id;
-    private Integer notification_id;
+    private Integer ticked_id;
+    private Integer user_id;
 
 
     ///  event  for
@@ -41,6 +49,5 @@ public class Users {
     private LocalDateTime created_at;
     @UpdateTimestamp
     private LocalDateTime updated_at;
-
 
 }
