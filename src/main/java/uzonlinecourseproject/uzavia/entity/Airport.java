@@ -8,6 +8,8 @@ import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 import uzonlinecourseproject.uzavia.enums.AirportCode;
+import uzonlinecourseproject.uzavia.enums.AirportName;
+import uzonlinecourseproject.uzavia.enums.Nationality;
 
 import java.time.LocalDateTime;
 import java.time.ZonedDateTime;
@@ -23,9 +25,11 @@ public class Airport {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String airport_name;
+    @Enumerated(EnumType.STRING)
+    private AirportName airport_name;
     private String city;
-    private String country;
+    @Enumerated(EnumType.STRING)
+    private Nationality country;
     private boolean isGable_Airport;
     private AirportCode whereTo;
     private AirportCode ToWhere;

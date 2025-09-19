@@ -23,10 +23,8 @@ public class Seat {
     private Integer id;
 
     private  String seat_number;
-
     @Enumerated(EnumType.STRING)
     private SeatStatus status;
-
     private boolean isAvailable;
 
     ///  relation

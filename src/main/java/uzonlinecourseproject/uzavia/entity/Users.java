@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import uzonlinecourseproject.uzavia.enums.RoleGeneral;
 
 import java.time.LocalDateTime;
 
@@ -27,7 +28,9 @@ public class Users {
     private String phone;
 
     private String password;
-    private String role;
+
+    @Enumerated(EnumType.STRING)
+    private RoleGeneral role;
     private boolean isVerified;
     private int collectStart;
 

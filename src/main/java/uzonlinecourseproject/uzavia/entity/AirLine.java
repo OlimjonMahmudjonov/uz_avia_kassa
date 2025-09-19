@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import uzonlinecourseproject.uzavia.enums.AirLineNames;
+import uzonlinecourseproject.uzavia.enums.Nationality;
 
 import java.time.LocalDateTime;
 
@@ -21,9 +23,12 @@ public class AirLine {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String airline_name;
+    @Enumerated(EnumType.STRING)
+    private AirLineNames airline_name;
     private String airline_code;
-    private String country;
+
+    @Enumerated(EnumType.STRING)
+    private Nationality country;
 
 
     ///  relation

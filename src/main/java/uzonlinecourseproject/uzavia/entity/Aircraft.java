@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import uzonlinecourseproject.uzavia.enums.AirCraftName;
 
 import java.time.LocalDateTime;
 
@@ -21,7 +22,8 @@ public class Aircraft {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private  String ariCraftName;
+    @Enumerated(EnumType.STRING)
+    private AirCraftName ariCraftName;
     private  int totalSeats;
 
     ///  relation

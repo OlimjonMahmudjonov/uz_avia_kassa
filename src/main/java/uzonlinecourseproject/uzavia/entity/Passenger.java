@@ -31,8 +31,12 @@ public class Passenger {
 
     @JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDateTime birthday;
+
+    @Enumerated(EnumType.STRING)
     private SEX sex ;
+    @Enumerated(EnumType.STRING)
     private Nationality nationality;
+    @Enumerated(EnumType.STRING)
     private PassportType type;
 
     @JsonFormat(pattern = "yyyy-MM-dd")

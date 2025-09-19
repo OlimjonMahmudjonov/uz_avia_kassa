@@ -23,6 +23,7 @@ public class FareRule {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     private SeatStatus status;
     private BigDecimal basePrice;
     private BigDecimal taxPercentage;

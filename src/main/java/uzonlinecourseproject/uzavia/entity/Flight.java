@@ -8,7 +8,9 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import uzonlinecourseproject.uzavia.enums.AirLineNames;
 import uzonlinecourseproject.uzavia.enums.Flight_Status;
+import uzonlinecourseproject.uzavia.enums.WeatherCondition;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -44,10 +46,13 @@ public class Flight {
     private int seat_count;
     @Enumerated(EnumType.STRING)
     private Flight_Status status;
-    private String airline_name;
+    @Enumerated(EnumType.STRING)
+    private AirLineNames airline_name;
 
 
-    private String weatherCondition;
+    @Enumerated(EnumType.STRING)
+    private WeatherCondition weather_condition;
+
     private int delayMinutes;
 
     ///  event  for
